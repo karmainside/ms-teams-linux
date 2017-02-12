@@ -1,15 +1,15 @@
 {
   "name": "ms-teams-capsule",
   "productName": "Microsoft Teams Capsule",
-  "description": "MST which allows to run MS Teams web version as a standalone app",
-  "version": "0.1.1",
+  "description": "Microsoft Teams Capsule allows to run MS Teams web version as a standalone app",
+  "version": "0.2.0",
   "author": "Vadzim Miashaikin <karmainside@gmail.com>",
   "copyright": "© 2017, Vadzim Miashaikin",
   "homepage": "http://example.com",
   "license": "MIT",
   "main": "app/background.js",
   "build": {
-    "appId": "com.example.electron-boilerplate",
+    "appId": "com.karmainsie.ms-teams-capsule",
     "files": [
       "app/**/*",
       "node_modules/**/*",

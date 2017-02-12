@@ -1,14 +1,14 @@
 # Microsoft Teams Capsule - unofficial application for Linux
 
 ## Description
-Microsoft Teams Capsule is unofficial aplication for Linux, which uses [electron framework](http://electron.atom.io/) to wrap web version of [Microsoft Teams](https://teams.microsoft.com/).
+Microsoft Teams Capsule is unofficial application for Linux, which uses [electron framework](http://electron.atom.io/) to wrap web version of [Microsoft Teams](https://teams.microsoft.com/).
 
 With this app you will be able to launch web version as an application with no need to keep the browser tap always open.
 
 Application also offers notifications for unread messages, but it's very limited.
 
 ## Installation
-Applications is distributed in the AppImage formatand should run on all common Linux distributions.
+Applications is distributed in the AppImage format and should run on all common Linux distributions.
 
 1. Download installation file
   * using direct link: [AppImage](http://dl.karmainside.com/ms-teams-capsule/ms-teams-capsule-latest-x86_64.AppImage) or [ZIP](http://dl.karmainside.com/ms-teams-capsule/ms-teams-capsule-latest-x86_64.zip) (_don't forget to unzip if you are downloading zip_)
@@ -23,8 +23,8 @@ Applications is distributed in the AppImage formatand should run on all common L
 You can also get more information about AppImage on the [official website](http://appimage.org/).
 
 ## Usage
-Install the application and lauch it. After logging in you will be able to use Microsoft Teams.
-Application supports very limited version of notifications. 
+Install the application and launch it. After logging in you will be able to use Microsoft Teams.
+Application supports very limited version of notifications.
 If you have something unread in chats, you will receive push notification and the icon will change with one with big red dot.
 
 ### If you don't see tray icon
@@ -35,5 +35,7 @@ On Linux distributions that only have app indicator support, you have to install
 ## Development
 This project is based on awesome [electron-boilerplate](https://github.com/szwacz/electron-boilerplate). Please, follow the link to learn more about using the development environment.
 
-Since I'm quite new to Electon, PR and advices are more than welcome!
+Since I'm quite new to Electron, PR and advices are more than welcome!
 
+## License
+MIT
