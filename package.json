@@ -2,7 +2,7 @@
   "name": "ms-teams-capsule",
   "productName": "Microsoft Teams Capsule",
   "description": "MST which allows to run MS Teams web version as a standalone app",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Vadzim Miashaikin <karmainside@gmail.com>",
   "copyright": "© 2017, Vadzim Miashaikin",
   "homepage": "http://example.com",

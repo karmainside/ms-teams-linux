@@ -4,6 +4,7 @@ import { app, Menu, Tray } from 'electron';
 import { devMenuTemplate } from './menu/dev_menu_template';
 import { fileMenu } from './menu/File';
 import { helpMenu } from './menu/Help';
+import { trayMenu } from './menu/Tray';
 import createWindow from './helpers/window';
 import notifier from 'node-notifier';
 
@@ -42,6 +43,7 @@ if (env.name !== 'production') {
 app.on('ready', function () {
     setApplicationMenu();
     appIcon = new Tray(iconPath.default);
+    appIcon.setContextMenu(trayMenu);
 
     var mainWindow = createWindow('main', {
         width: 1000,
@@ -56,17 +58,18 @@ app.on('ready', function () {
     mainWindow.webContents.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36');
 
     mainWindow.loadURL('https://teams.microsoft.com/');
+    console.log(mainWindow.id);
 
     mainWindow.on("page-title-updated", function(event, title) {
 
         if (title.match(notifRegex)) {
-            notifier.notify({
-                title: 'Microsoft Teams for Linux',
-                message: 'You have new chat message!',
-                icon: iconPath.appDefault,
-                wait: true
-
-            });
+            // notifier.notify({
+            //     title: 'Microsoft Teams for Linux',
+            //     message: 'You have new chat message!',
+            //     icon: iconPath.appDefault,
+            //     wait: true
+            //
+            // });
             appIcon.setImage(iconPath.unread);
             mainWindow.setIcon(iconPath.appUnread);
             mainWindow.flashFrame(true);
@@ -78,9 +81,9 @@ app.on('ready', function () {
         }
     });
 
-    notifier.on('click', function (notifierObject, options) {
-        mainWindow.restore();
-    });
+    // notifier.on('click', function (notifierObject, options) {
+    //     mainWindow.restore();
+    // });
 
     if (env.name === 'development') {
         mainWindow.openDevTools();
