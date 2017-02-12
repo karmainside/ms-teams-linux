@@ -1,7 +1,7 @@
-# Microsoft Teams Capsule - unofficial application for Linux
+# Microsoft Teams Capsule - unofficial Microsoft Teams app for Linux
 
 ## Description
-Microsoft Teams Capsule is unofficial application for Linux, which uses [electron framework](http://electron.atom.io/) to wrap web version of [Microsoft Teams](https://teams.microsoft.com/).
+Microsoft Teams Capsule is unofficial Microsoft Teams application for Linux, which uses [electron framework](http://electron.atom.io/) to wrap web version of [Microsoft Teams](https://teams.microsoft.com/).
 
 With this app you will be able to launch web version as an application with no need to keep the browser tap always open.
 
