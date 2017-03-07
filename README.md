@@ -27,6 +27,9 @@ Install the application and launch it. After logging in you will be able to use 
 Application supports very limited version of notifications.
 If you have something unread in chats, you will receive push notification and the icon will change with one with big red dot.
 
+### Known issues
+If you are stucked with blank white, blue or purple screen, just click File -> Reload, there is no need to relaunch the application.
+
 ### If you don't see tray icon
 On Linux distributions that only have app indicator support, you have to install libappindicator1 to make the tray icon work.
 
