@@ -16,7 +16,7 @@ var appDir = jetpack.cwd(app.getAppPath());
 // here files like it is node.js! Welcome to Electron world :)
 console.log(
   'The author of this app is:',
-  appDir.read('package.json', 'json').author,
+  appDir.read('package.json', 'json').author
 );
 
 document.addEventListener('DOMContentLoaded', function() {

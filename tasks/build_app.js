@@ -47,13 +47,13 @@ gulp.task('watch', function() {
     'src/**/*.js',
     batch(function(events, done) {
       gulp.start('bundle', beepOnError(done));
-    }),
+    })
   );
   watch(
     'src/**/*.less',
     batch(function(events, done) {
       gulp.start('less', beepOnError(done));
-    }),
+    })
   );
 });
 

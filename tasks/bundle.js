@@ -48,7 +48,7 @@ var generateExternalModulesList = function() {
     nodeBuiltInModules,
     electronBuiltInModules,
     Object.keys(appManifest.dependencies),
-    Object.keys(appManifest.devDependencies),
+    Object.keys(appManifest.devDependencies)
   );
 };
 
@@ -77,7 +77,7 @@ module.exports = function(src, dest, opts) {
     return Promise.all([
       jetpack.writeAsync(
         dest,
-        isolatedCode + '\n//# sourceMappingURL=' + jsFile + '.map',
+        isolatedCode + '\n//# sourceMappingURL=' + jsFile + '.map'
       ),
       jetpack.writeAsync(dest + '.map', result.map.toString()),
     ]);
