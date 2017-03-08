@@ -1,6 +1,6 @@
 import path from 'path';
 import url from 'url';
-import { app, Menu, Tray } from 'electron';
+import { app, Menu, Tray, shell } from 'electron';
 import { devMenuTemplate } from './menu/dev_menu_template';
 import { fileMenu } from './menu/File';
 import { helpMenu } from './menu/Help';
@@ -88,6 +88,30 @@ app.on('ready', function () {
     if (env.name === 'development') {
         mainWindow.openDevTools();
     }
+
+    const ignoreOpenInNewWindow = [
+      'teams.microsoft',
+      'login.microsoftonline',
+      'sts.sportradar'
+    ];
+
+    const handleRedirect = (e, url) => {
+        let ignoreOpen = false;
+
+        ignoreOpenInNewWindow.forEach((ignoreUrl) => {
+          if (url.indexOf(ignoreUrl) > -1) {
+              ignoreOpen = true;
+          }
+        });
+
+        if (!ignoreOpen) {
+          e.preventDefault();
+          shell.openExternal(url);
+        }
+    };
+
+    mainWindow.webContents.on('will-navigate', handleRedirect);
+    mainWindow.webContents.on('new-window', handleRedirect);
 });
 
 app.on('window-all-closed', function () {
