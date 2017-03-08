@@ -1,33 +1,29 @@
 import path from 'path';
-import url from 'url';
 import { app, Menu, Tray, shell } from 'electron';
-import { devMenuTemplate } from './menu/dev_menu_template';
-import { fileMenu } from './menu/File';
-import { helpMenu } from './menu/Help';
-import { trayMenu } from './menu/Tray';
+import DevelopmentMenuTemplate from './menu/DevelopmentMenuTemplate';
+import Menu from './menu/Menu';
+import Help from './menu/Help';
+import Tray from './menu/Tray';
 import createWindow from './helpers/window';
-import notifier from 'node-notifier';
 
 // Special module holding environment variables which you declared
 // in config/env_xxx.json file.
 import env from './env';
 
-var mainWindow;
-
 const notifRegex = '\([0-9]+\).*?';
 
 let appIcon = null;
-let iconPath = {
+const iconPath = {
   default: path.join(__dirname, 'icon-32x32.png'),
   unread: path.join(__dirname, 'icon-32x32-unread.png'),
   appDefault: path.join(__dirname, 'icon-256x256.png'),
   appUnread: path.join(__dirname, 'icon-256x256-unread.png'),
 };
 
-var setApplicationMenu = function() {
-  var menus = [fileMenu, helpMenu];
+const setApplicationMenu = function() {
+  const menus = [Menu, Help];
   if (env.name !== 'production') {
-    menus.push(devMenuTemplate);
+    menus.push(DevelopmentMenuTemplate);
   }
   Menu.setApplicationMenu(Menu.buildFromTemplate(menus));
 };
@@ -36,16 +32,16 @@ var setApplicationMenu = function() {
 // Thanks to this you can use production and development versions of the app
 // on same machine like those are two separate apps.
 if (env.name !== 'production') {
-  var userDataPath = app.getPath('userData');
-  app.setPath('userData', userDataPath + ' (' + env.name + ')');
+  const userDataPath = app.getPath('userData');
+  app.setPath('userData', `${userDataPath} (${env.name})`);
 }
 
-app.on('ready', function() {
+app.on('ready', () => {
   setApplicationMenu();
   appIcon = new Tray(iconPath.default);
-  appIcon.setContextMenu(trayMenu);
+  appIcon.setContextMenu(Tray);
 
-  var mainWindow = createWindow('main', {
+  const mainWindow = createWindow('main', {
     width: 1000,
     height: 600,
     webPreferences: {
@@ -62,7 +58,7 @@ app.on('ready', function() {
   mainWindow.loadURL('https://teams.microsoft.com/');
   console.log(mainWindow.id);
 
-  mainWindow.on('page-title-updated', function(event, title) {
+  mainWindow.on('page-title-updated', (event, title) => {
     if (title.match(notifRegex)) {
       // notifier.notify({
       //     title: 'Microsoft Teams for Linux',
@@ -114,6 +110,6 @@ app.on('ready', function() {
   mainWindow.webContents.on('new-window', handleRedirect);
 });
 
-app.on('window-all-closed', function() {
+app.on('window-all-closed', () => {
   app.quit();
 });

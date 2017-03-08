@@ -1,40 +1,36 @@
-'use strict';
+const gulp = require('gulp');
+const less = require('gulp-less');
+const watch = require('gulp-watch');
+const batch = require('gulp-batch');
+const plumber = require('gulp-plumber');
+const jetpack = require('fs-jetpack');
+const bundle = require('./bundle');
+const utils = require('./utils');
 
-var gulp = require('gulp');
-var less = require('gulp-less');
-var watch = require('gulp-watch');
-var batch = require('gulp-batch');
-var plumber = require('gulp-plumber');
-var jetpack = require('fs-jetpack');
-var bundle = require('./bundle');
-var utils = require('./utils');
+const projectDir = jetpack;
+const srcDir = jetpack.cwd('./src');
+const destDir = jetpack.cwd('./app');
 
-var projectDir = jetpack;
-var srcDir = jetpack.cwd('./src');
-var destDir = jetpack.cwd('./app');
-
-gulp.task('bundle', function() {
-  return Promise.all([
+gulp.task('bundle', () =>
+  Promise.all([
     bundle(srcDir.path('background.js'), destDir.path('background.js')),
     bundle(srcDir.path('app.js'), destDir.path('app.js')),
-  ]);
-});
+  ]));
 
-gulp.task('less', function() {
-  return gulp
+gulp.task('less', () =>
+  gulp
     .src(srcDir.path('stylesheets/main.less'))
     .pipe(plumber())
     .pipe(less())
-    .pipe(gulp.dest(destDir.path('stylesheets')));
-});
+    .pipe(gulp.dest(destDir.path('stylesheets'))));
 
-gulp.task('environment', function() {
-  var configFile = 'config/env_' + utils.getEnvName() + '.json';
+gulp.task('environment', () => {
+  const configFile = `config/env_${utils.getEnvName()}.json`;
   projectDir.copy(configFile, destDir.path('env.json'), { overwrite: true });
 });
 
-gulp.task('watch', function() {
-  var beepOnError = function(done) {
+gulp.task('watch', () => {
+  const beepOnError = function(done) {
     return function(err) {
       if (err) {
         utils.beepSound();
@@ -45,13 +41,13 @@ gulp.task('watch', function() {
 
   watch(
     'src/**/*.js',
-    batch(function(events, done) {
+    batch((events, done) => {
       gulp.start('bundle', beepOnError(done));
     })
   );
   watch(
     'src/**/*.less',
-    batch(function(events, done) {
+    batch((events, done) => {
       gulp.start('less', beepOnError(done));
     })
   );

@@ -1,5 +1,4 @@
 import path from 'path';
-import { app, BrowserWindow, session } from 'electron';
 import openAboutWindow from 'about-window';
 
 const copyrightText = `
@@ -9,7 +8,7 @@ const copyrightText = `
 </center>
 `;
 
-export const helpMenu = {
+const Help = {
   label: 'Help',
   submenu: [
     {
@@ -27,3 +26,5 @@ export const helpMenu = {
     },
   ],
 };
+
+export default Help;

@@ -1,6 +1,4 @@
-'use strict';
-
-var argv = require('minimist')(process.argv);
+const argv = require('minimist')(process.argv);
 
 exports.getEnvName = function() {
   return argv.env || 'development';
