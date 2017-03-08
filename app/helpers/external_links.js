@@ -13,33 +13,33 @@
 //    <a href="http://bing.com">bing</a>
 // </p>
 
-(function () {
-    'use strict';
-    console.log('asd');
+(function() {
+  'use strict';
+  console.log('asd');
 
-    var shell = require('electron').shell;
+  var shell = require('electron').shell;
 
-    var supportExternalLinks = function (e) {
-        var href;
-        var isExternal = false;
+  var supportExternalLinks = function(e) {
+    var href;
+    var isExternal = false;
 
-        var checkDomElement = function (element) {
-            if (element.nodeName === 'A') {
-                href = element.getAttribute('href');
-            }
-            if (element.getAttribute('target') === '_blank') {
-                isExternal = true;
-            }
-            if (href && isExternal) {
-                shell.openExternal(href);
-                e.preventDefault();
-            } else if (element.parentElement) {
-                checkDomElement(element.parentElement);
-            }
-        };
-
-        checkDomElement(e.target);
+    var checkDomElement = function(element) {
+      if (element.nodeName === 'A') {
+        href = element.getAttribute('href');
+      }
+      if (element.getAttribute('target') === '_blank') {
+        isExternal = true;
+      }
+      if (href && isExternal) {
+        shell.openExternal(href);
+        e.preventDefault();
+      } else if (element.parentElement) {
+        checkDomElement(element.parentElement);
+      }
     };
 
-    document.addEventListener('click', supportExternalLinks, false);
-}());
+    checkDomElement(e.target);
+  };
+
+  document.addEventListener('click', supportExternalLinks, false);
+})();
