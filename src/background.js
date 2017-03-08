@@ -1,9 +1,9 @@
 import path from 'path';
 import { app, Menu, Tray, shell } from 'electron';
-import DevelopmentMenuTemplate from './menu/DevelopmentMenuTemplate';
-import Menu from './menu/Menu';
-import Help from './menu/Help';
-import Tray from './menu/Tray';
+import DevelopmentMenuTemplateMenu from './menu/DevelopmentMenuTemplateMenu';
+import FileMenu from './menu/FileMenu';
+import HelpMenu from './menu/HelpMenu';
+import TrayMenu from './menu/TrayMenu';
 import createWindow from './helpers/window';
 
 // Special module holding environment variables which you declared
@@ -21,9 +21,9 @@ const iconPath = {
 };
 
 const setApplicationMenu = function() {
-  const menus = [Menu, Help];
+  const menus = [FileMenu, HelpMenu];
   if (env.name !== 'production') {
-    menus.push(DevelopmentMenuTemplate);
+    menus.push(DevelopmentMenuTemplateMenu);
   }
   Menu.setApplicationMenu(Menu.buildFromTemplate(menus));
 };
@@ -39,7 +39,7 @@ if (env.name !== 'production') {
 app.on('ready', () => {
   setApplicationMenu();
   appIcon = new Tray(iconPath.default);
-  appIcon.setContextMenu(Tray);
+  appIcon.setContextMenu(TrayMenu);
 
   const mainWindow = createWindow('main', {
     width: 1000,

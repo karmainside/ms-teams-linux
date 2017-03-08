@@ -1,24 +1,10 @@
-os:
-  - linux
-  - osx
-
-branches:
-  only:
-    - master
-
-env:
-  - NODE_VERSION="6.3.0"
-  
-before_script:
- - chmod +x ./scripts/travis-build.sh
-
-script: ./scripts/travis-build.sh
-
+language: node_js
+node_js:
+  - 6
+  - stable
 cache:
   directories:
-    - node_modules
-
-notifications:
-  email:
-    on_success: never
-    on_failure: change
+  - node_modules
+script:
+  - npm run eslint
+  - npm test

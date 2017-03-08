@@ -8,7 +8,7 @@ const copyrightText = `
 </center>
 `;
 
-const Help = {
+const HelpMenu = {
   label: 'Help',
   submenu: [
     {
@@ -27,4 +27,4 @@ const Help = {
   ],
 };
 
-export default Help;
+export default HelpMenu;
