@@ -1,23 +1,30 @@
 import { app, BrowserWindow } from 'electron';
 
-const Menu = {
-  label: 'File',
+const DevelopmentMenuTemplateMenu = {
+  label: 'Development',
   submenu: [
     {
       label: 'Reload',
       accelerator: 'CmdOrCtrl+R',
-      click: () => {
+      click() {
         BrowserWindow.getFocusedWindow().webContents.reloadIgnoringCache();
+      },
+    },
+    {
+      label: 'Toggle DevTools',
+      accelerator: 'Alt+CmdOrCtrl+I',
+      click() {
+        BrowserWindow.getFocusedWindow().toggleDevTools();
       },
     },
     {
       label: 'Quit',
       accelerator: 'CmdOrCtrl+Q',
-      click: () => {
+      click() {
         app.quit();
       },
     },
   ],
 };
 
-export default Menu;
+export default DevelopmentMenuTemplateMenu;

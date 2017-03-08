@@ -1,8 +1,6 @@
 const gulp = require('gulp');
-const less = require('gulp-less');
 const watch = require('gulp-watch');
 const batch = require('gulp-batch');
-const plumber = require('gulp-plumber');
 const jetpack = require('fs-jetpack');
 const bundle = require('./bundle');
 const utils = require('./utils');
@@ -16,13 +14,6 @@ gulp.task('bundle', () =>
     bundle(srcDir.path('background.js'), destDir.path('background.js')),
     bundle(srcDir.path('app.js'), destDir.path('app.js')),
   ]));
-
-gulp.task('less', () =>
-  gulp
-    .src(srcDir.path('stylesheets/main.less'))
-    .pipe(plumber())
-    .pipe(less())
-    .pipe(gulp.dest(destDir.path('stylesheets'))));
 
 gulp.task('environment', () => {
   const configFile = `config/env_${utils.getEnvName()}.json`;
@@ -45,12 +36,6 @@ gulp.task('watch', () => {
       gulp.start('bundle', beepOnError(done));
     })
   );
-  watch(
-    'src/**/*.less',
-    batch((events, done) => {
-      gulp.start('less', beepOnError(done));
-    })
-  );
 });
 
-gulp.task('build', ['bundle', 'less', 'environment']);
+gulp.task('build', ['bundle', 'environment']);

@@ -12,16 +12,6 @@ module.exports = {
   },
   plugins: ['import'],
   rules: {
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        devDependencies: [
-          '**/*.test.js',
-          'e2e/**/*.js',
-          'scripts/**/*.js',
-          'tasks/**/*.js',
-        ],
-      },
-    ],
+    'import/no-extraneous-dependencies': 'off',
   },
 };
