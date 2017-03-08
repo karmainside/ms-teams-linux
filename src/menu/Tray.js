@@ -1,6 +1,6 @@
-import { app, BrowserWindow, session, Menu } from 'electron';
+import { app, BrowserWindow, Menu } from 'electron';
 
-export const trayMenu = Menu.buildFromTemplate([
+const Tray = Menu.buildFromTemplate([
   {
     label: 'Open',
     click: () => {
@@ -21,3 +21,5 @@ export const trayMenu = Menu.buildFromTemplate([
     },
   },
 ]);
+
+export default Tray;

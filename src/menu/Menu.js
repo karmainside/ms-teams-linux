@@ -1,6 +1,6 @@
-import { app, BrowserWindow, session } from 'electron';
+import { app, BrowserWindow } from 'electron';
 
-export const fileMenu = {
+const Menu = {
   label: 'File',
   submenu: [
     {
@@ -19,3 +19,5 @@ export const fileMenu = {
     },
   ],
 };
+
+export default Menu;
