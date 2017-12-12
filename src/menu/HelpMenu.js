@@ -1,5 +1,6 @@
 import path from 'path';
 import openAboutWindow from 'about-window';
+import { checkUpdate } from '../helpers/updater';
 
 const copyrightText = `
 <center>
@@ -24,6 +25,10 @@ const HelpMenu = {
         win_options: false,
       }),
     },
+	{
+	  label: 'Check for updates...',
+	  click: () => checkUpdate(true),
+	}
   ],
 };
 

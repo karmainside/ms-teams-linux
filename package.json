@@ -2,7 +2,7 @@
   "name": "ms-teams-capsule",
   "productName": "Microsoft Teams Capsule",
   "description": "Microsoft Teams Capsule allows to run MS Teams web version as a standalone app",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "author": "Vadzim Miashaikin <karmainside@gmail.com>",
   "copyright": "© 2017, Vadzim Miashaikin",
   "license": "MIT",
@@ -15,10 +15,8 @@
       "package.json"
     ],
     "appImage": {
-        "category": "Network"
+      "category": "Network"
     }
-
-
   },
   "scripts": {
     "postinstall": "install-app-deps electron-builder install-app-deps",
@@ -40,7 +38,9 @@
   },
   "dependencies": {
     "about-window": "^1.6.1",
-    "fs-jetpack": "^1.2.0"
+    "compare-versions": "^3.1.0",
+    "fs-jetpack": "^1.2.0",
+    "node-fetch": "^1.7.3"
   },
   "devDependencies": {
     "electron": "^1.8.2-beta.3",

@@ -6,6 +6,7 @@ import HelpMenu from './menu/HelpMenu';
 import TrayMenu from './menu/TrayMenu';
 import HandleRightClick from './menu/RightClick';
 import createWindow from './helpers/window';
+import { checkUpdate } from './helpers/updater';
 
 // Special module holding environment variables which you declared
 // in config/env_xxx.json file.
@@ -51,6 +52,8 @@ app.on('ready', () => {
     },
     icon: iconPath.appDefault,
   });
+
+  checkUpdate();
 
   mainWindow.webContents.setUserAgent(
     'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.2883.87 Safari/537.36'
