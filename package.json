@@ -2,7 +2,7 @@
   "name": "ms-teams-capsule",
   "productName": "Microsoft Teams Capsule",
   "description": "Microsoft Teams Capsule allows to run MS Teams web version as a standalone app",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "author": "Vadzim Miashaikin <karmainside@gmail.com>",
   "copyright": "© 2017, Vadzim Miashaikin",
   "license": "MIT",
@@ -35,23 +35,23 @@
   },
   "dependencies": {
     "about-window": "^1.6.1",
-    "fs-jetpack": "^0.10.2"
+    "fs-jetpack": "^1.2.0"
   },
   "devDependencies": {
-    "electron": "^1.6.0",
-    "electron-builder": "^15.1.1",
-    "eslint": "^3.17.1",
-    "eslint-config-airbnb-base": "^11.1.1",
-    "eslint-config-prettier": "^1.5.0",
+    "electron": "^1.6.15",
+    "electron-builder": "^19.48.3",
+    "eslint": "^4.13.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.2.0",
     "gulp": "^3.9.0",
     "gulp-batch": "^1.0.5",
     "gulp-watch": "^4.3.5",
-    "husky": "^0.13.2",
-    "jest": "^19.0.2",
-    "lint-staged": "^3.3.1",
+    "husky": "^0.14.3",
+    "jest": "^21.2.1",
+    "lint-staged": "^6.0.0",
     "minimist": "^1.2.0",
-    "prettier": "^0.21.0",
-    "rollup": "^0.36.3"
+    "prettier": "^1.9.2",
+    "rollup": "^0.44.0"
   }
 }
