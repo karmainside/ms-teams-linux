@@ -1,24 +1,19 @@
-os:
-  - linux
-  - osx
-
-branches:
-  only:
-    - master
-
-env:
-  - NODE_VERSION="6.3.0"
-  
-before_script:
- - chmod +x ./scripts/travis-build.sh
-
-script: ./scripts/travis-build.sh
-
+language: node_js
+node_js:
+  - 6
 cache:
   directories:
     - node_modules
-
-notifications:
-  email:
-    on_success: never
-    on_failure: change
+script:
+  - npm run eslint
+  - npm test
+  - npm run release
+deploy:
+  provider: releases
+  api_key:
+    secure: rRowrv41Kg1vCK3cy/2A4RiBOv9P43zKZ3KBkcHxgXnfh9ZDyIcJmx7eg8QxM5WkHHQHnwPqo8UuQLjin/BBbK7M9VshXE1pVc1Cn93+YqhW+4oiOwOK9LSg5yktMoSZTb4SRraoVEZ9MP+l0mBUxYwl5Ue7cTRAGqD2kWfFMGiSu6tFjlPWNTMlcfMiDlR/zKe5RoKdst0576lhVa7uGUyD6Z6zchHvuUC+56bAyF+4+ZvTcnLkxCQhfrwgu08NkU2S9ObqFSNWmPG97i2DBqhNX5C6LFDgTFKsIl5zen1QzcpYGtaK5IhOEqhlNYLsAxKo0bfEcd1sJN8ET7KJ/yK+jRWrEoW5+7jU7bkY8K5Ey0dlf4Z/nI2wsN0R67ASPUFGkDziKmXWqqZnibJqOHcbFJgGB5+DZKpbbDgWtT0HkSXv1TMf1ft1XalQ34WaP/z5em8Ix7f1dxNk9esOAUFa5aUkL3zLEzNQ7NQFboIJ/ffxYwEBpJvyl3KG3fucTe/tH3/ejHk4ipT59bE7G6aA2Edwde2E0ZHCXknKtAYpbhTMk2hzG+kB3MVrEIiZf+OR9jRrQ/A4Wouwc7HqhxzbB6q0IAtoCRYMGtrG0i2t3bP/gz96CQqzmuXyn4ZBOLOmnF5p67rZrXhxBqas7geh4B30RRHIbKQm+xNKEf8=
+  file_glob: true
+  file: "dist/*.AppImage"
+  on:
+    tags: true
+    repo: sportradar/ms-teams-linux
