@@ -13,7 +13,12 @@
       "app/**/*",
       "node_modules/**/*",
       "package.json"
-    ]
+    ],
+    "appImage": {
+        "category": "Network"
+    }
+
+
   },
   "scripts": {
     "postinstall": "install-app-deps electron-builder install-app-deps",
