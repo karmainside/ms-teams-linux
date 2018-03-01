@@ -14,8 +14,8 @@ Application also offers notifications for unread messages, but it's very limited
 Applications is distributed in the AppImage format and should run on all common Linux distributions.
 
 1. Download installation file
-  * using direct link: [AppImage](https://github.com/sportradar/ms-teams-linux/releases/download/v0.4.0/ms-teams-capsule-0.4.0-x86_64.AppImage)
-  * using wget: `$ wget https://github.com/sportradar/ms-teams-linux/releases/download/v0.4.0/ms-teams-capsule-0.4.0-x86_64.AppImage`
+  * using direct link: [AppImage](https://github.com/karmainside/ms-teams-linux/releases/download/0.5.1/ms-teams-capsule-0.5.1-x86_64.AppImage)
+  * using wget: `$ wget https://github.com/karmainside/ms-teams-linux/releases/download/0.5.1/ms-teams-capsule-0.5.1-x86_64.AppImage`
 
 2. Make it executable
   * `$ chmod a+x ms-teams-capsule*.AppImage`
