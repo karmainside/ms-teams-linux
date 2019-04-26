@@ -1,5 +1,7 @@
 # Microsoft Teams Capsule - unofficial Microsoft Teams app for Linux
 
+💀 Project is no longer maintained.
+
 ## Latest release
 **0.5.1** - 12 Dec 2017
 
