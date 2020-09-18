@@ -9,18 +9,21 @@ const projectDir = jetpack;
 const srcDir = jetpack.cwd('./src');
 const destDir = jetpack.cwd('./app');
 
-gulp.task('bundle', () =>
+gulp.task('bundle', (done) => {
   Promise.all([
     bundle(srcDir.path('background.js'), destDir.path('background.js')),
     bundle(srcDir.path('app.js'), destDir.path('app.js')),
-  ]));
-
-gulp.task('environment', () => {
-  const configFile = `config/env_${utils.getEnvName()}.json`;
-  projectDir.copy(configFile, destDir.path('env.json'), { overwrite: true });
+  ]);
+  done();
 });
 
-gulp.task('watch', () => {
+gulp.task('environment', (done) => {
+  const configFile = `config/env_${utils.getEnvName()}.json`;
+  projectDir.copy(configFile, destDir.path('env.json'), { overwrite: true });
+  done();
+});
+
+gulp.task('watch', (done) => {
   const beepOnError = function(done) {
     return function(err) {
       if (err) {
@@ -36,6 +39,7 @@ gulp.task('watch', () => {
       gulp.start('bundle', beepOnError(done));
     })
   );
+  done();
 });
 
-gulp.task('build', ['bundle', 'environment']);
+gulp.task('build', gulp.series('bundle', gulp.series( 'environment')));
